@@ -27,14 +27,14 @@ async function run() {
             const order = await cursor.toArray();
             res.send(order);
 
-            //Post api for Tour 
+            //Post users api 
             app.post('/users', async (req, res) => {
                 const user = req.body;
                 const result = await usersCollection.insertOne(user);
                 res.json(result)
             })
 
-            //DELETE api for manage tour
+            //DELETE users api
             app.delete('/users/:id', async (req, res) => {
                 const id = req.params.id;
                 const query = { _id: ObjectId(id) };
@@ -55,7 +55,7 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send('Arif Db Connected')
+    res.send('Arif Server Connected')
 })
 
 app.listen(port, () => {
